@@ -3,6 +3,8 @@ using UnityEngine;
 public class Paddle : MonoBehaviour
 {
     public float speed=5;
+    public KeyCode inputKeyUp= KeyCode.W;
+    public KeyCode inputKeyDown= KeyCode.S;
 
     private void Update()
     {
@@ -14,11 +16,11 @@ public class Paddle : MonoBehaviour
     {
         float movement=0;
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(inputKeyUp))
         {
             movement=1;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(inputKeyDown))
         {
             movement=-1;
         }
