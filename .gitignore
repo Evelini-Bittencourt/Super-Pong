@@ -1,0 +1,33 @@
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+MemoryCaptures/
+UserSettings/
+
+# IDE
+.vscode/
+.vs/
+.idea/
+*.csproj
+*.sln
+*.unityproj
+*.user
+*.userprefs
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.swp
+*.swo
+*~
+bin/
+obj/
+
+# LeanGUI 
+Assets/Plugins/CW/LeanGUI/examples/
