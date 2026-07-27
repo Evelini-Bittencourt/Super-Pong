@@ -468,6 +468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ball
   speed: 5
+  paddleLeft: {fileID: 2098292921}
+  paddleRight: {fileID: 14117814}
 --- !u!1 &2098292919
 GameObject:
   m_ObjectHideFlags: 0
