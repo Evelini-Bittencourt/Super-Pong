@@ -8,17 +8,25 @@ public class Ball : MonoBehaviour
    //forma de fazer referência a outros elementos da cena. Defini-se uma variável com o tipo Transform (componente que guarda as as localizaçãoes dos objetos) e depois arrasta o objeto até o epaço que vai aparecer na interface da unity, para fazer a ligação entre os objetos 
    public Transform paddleLeft;
    public Transform paddleRight;
+   private bool isMoving= false;
 
    private void Update()
     {
-      Move();
-      BounceTopAndBottom();  
-      BounceWithPaddles();
+        if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
+        {
+            isMoving=true;
+        }
+        Move();
+        BounceTopAndBottom();  
+        BounceWithPaddles();
     }
     private void Move()
     {
-        Vector3 movement= direction*speed*Time.deltaTime;
-        transform.Translate(movement); //move o objeto
+        if (isMoving)
+        {
+            Vector3 movement= direction*speed*Time.deltaTime;
+            transform.Translate(movement); //move o objeto
+        }
     }
     private void BounceTopAndBottom()
     {
@@ -68,5 +76,11 @@ public class Ball : MonoBehaviour
     {
         transform.position= Vector3.zero;
         direction= -direction;
+        isMoving= false;
+        Invoke("StartMoving",2);//executa o método nomeado depois do tempo definido no segundo parâmetro
+    }
+    private void StartMoving()
+    {
+        isMoving=true;
     }
 }
