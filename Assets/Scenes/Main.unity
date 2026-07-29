@@ -257,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   scorePlayer1: 0
   scorePlayer2: 0
-  ball: {fileID: 536854749}
+  ball: {fileID: 536854750}
   score: {fileID: 1976738972}
 --- !u!4 &153457011
 Transform:

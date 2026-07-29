@@ -64,4 +64,9 @@ public class Ball : MonoBehaviour
             }
         }
     }
+    public void ResetPosition()
+    {
+        transform.position= Vector3.zero;
+        direction= -direction;
+    }
 }
