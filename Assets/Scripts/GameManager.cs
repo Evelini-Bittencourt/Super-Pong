@@ -1,4 +1,6 @@
+using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Text score;
     public int pointsToIncreaseSpeed=3;
     public float speedIncrement= 0.3f;
+    public float maxScore= 30;
 
     private void Update()
     {
@@ -24,6 +27,8 @@ public class GameManager : MonoBehaviour
             AddScore(1);
             ball.ResetPosition();
         }
+
+        RestartScene();
     }
     public void AddScore(int player)
     {
@@ -40,6 +45,13 @@ public class GameManager : MonoBehaviour
             ball.speed += speedIncrement;
         }
         score.text= $"{scorePlayer1} X {scorePlayer2}";
+    }
+    private void RestartScene()
+    {
+        if(scorePlayer1 >= maxScore || scorePlayer2 >= maxScore)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//captura o index da cena atual para passar para o método que vai recarregar a cena
+        }
     }
     
 
