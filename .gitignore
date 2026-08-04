@@ -31,3 +31,6 @@ obj/
 
 # LeanGUI 
 Assets/Plugins/CW/LeanGUI/examples/
+
+#build
+Build/
