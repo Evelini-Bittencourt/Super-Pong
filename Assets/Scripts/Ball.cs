@@ -8,6 +8,17 @@ public class Ball : MonoBehaviour
    //forma de fazer referência a outros elementos da cena. Defini-se uma variável com o tipo Transform (componente que guarda as as localizaçãoes dos objetos) e depois arrasta o objeto até o epaço que vai aparecer na interface da unity, para fazer a ligação entre os objetos 
    public Transform paddleLeft;
    public Transform paddleRight;
+   public SpriteRenderer ballSprite;
+   public SpriteRenderer paddleLeftSprite;
+   public SpriteRenderer paddleRightSprite;
+   public Color primaryColor1;
+   public Color primaryColor2;
+   public Color primaryColor3;
+   public Color backgroundColor1;
+   public Color backgroundColor2;
+   public Color backgroundColor3;
+   private int colorIndex=1;
+
    private bool isMoving= false;
 
    private void Update()
@@ -37,10 +48,12 @@ public class Ball : MonoBehaviour
         if(direction.y>0 && position.y >= (screenTop - 0.25f)) //se estiver indo para cima e já estiver no máximo
         {
             direction.y=-1;//muda o movimento para cima
+           SwapColors();
         }
         if(direction.y<0 && position.y <= (screenBottom + 0.25f))
         {
             direction.y=1;
+            SwapColors();
         }
 
     }
@@ -59,6 +72,7 @@ public class Ball : MonoBehaviour
             )
             {
                 direction.x=-1;
+                SwapColors();
             }
         }else if (direction.x < 0)
         {
@@ -69,6 +83,7 @@ public class Ball : MonoBehaviour
             )
             {
                 direction.x=1;
+                SwapColors();
             }
         }
     }
@@ -82,5 +97,31 @@ public class Ball : MonoBehaviour
     private void StartMoving()
     {
         isMoving=true;
+    }
+    private void SwapColors()
+    {
+        Color primarycolor= Color.white;
+        Color backgroundColor=Color.white;
+
+        if (colorIndex == 1)
+        {
+            colorIndex=2;
+            primarycolor= primaryColor2;
+            backgroundColor=backgroundColor2;
+        }else if(colorIndex==2)
+        {
+            colorIndex=3;
+            primarycolor= primaryColor3;
+            backgroundColor=backgroundColor3;
+        }else if(colorIndex==3)
+        {
+            colorIndex=1;
+            primarycolor= primaryColor1;
+            backgroundColor=backgroundColor1;
+        }
+        ballSprite.color= primarycolor;
+        paddleLeftSprite.color=primarycolor;
+        paddleRightSprite.color=primarycolor;
+        Camera.main.backgroundColor=backgroundColor;
     }
 }
